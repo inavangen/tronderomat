@@ -101,18 +101,58 @@ function App() {
       return;
     }
     
-    // Split input into words while preserving punctuation and whitespace
-    const words = inputText.match(/(\b[\wæøåÆØÅ]+\b|[^\w\sæøåÆØÅ])|\s+/g) || [];
+    // Debug: Log what we're working with
+    console.log('Input text:', inputText);
+    
+    // Create a custom split function that properly handles Norwegian characters
+    const splitWords = (text: string) => {
+      const result = [];
+      let currentWord = '';
+      let inWord = false;
+      
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        // Check if character is a letter (including Norwegian) or apostrophe/hyphen for compound words
+        const isWordChar = /[a-zA-ZæøåÆØÅ0-9]/.test(char);
+        
+        if (isWordChar) {
+          currentWord += char;
+          inWord = true;
+        } else {
+          if (inWord) {
+            result.push(currentWord);
+            currentWord = '';
+            inWord = false;
+          }
+          result.push(char); // Add punctuation or whitespace as separate item
+        }
+      }
+      
+      // Add last word if exists
+      if (inWord && currentWord) {
+        result.push(currentWord);
+      }
+      
+      console.log('Split result:', result);
+      return result;
+    };
+    
+    const words = splitWords(inputText);
     let translatedText = '';
     let matches = 0;
     
     words.forEach(word => {
       // Check if it's a word (not punctuation or whitespace)
-      if (word.match(/^[\wæøåÆØÅ]+$/)) {
+      // Use a simpler check for word characters
+      const isWord = /^[a-zA-ZæøåÆØÅ0-9]+$/.test(word);
+      
+      if (isWord) {
         const lowerWord = word.toLowerCase();
+        console.log('Checking word:', word, 'lowercase:', lowerWord);
         const translation = translationMap.get(lowerWord);
         
         if (translation) {
+          console.log('Found translation:', translation, 'for word:', word);
           // Check the case of the original word and apply same case to translation
           if (word === word.toUpperCase()) {
             // If original was ALL UPPERCASE, make translation uppercase
@@ -130,6 +170,7 @@ function App() {
           matches++;
         } else {
           // Keep original word if no translation found
+          console.log('No translation found for:', word);
           translatedText += word;
         }
       } else {
@@ -138,6 +179,9 @@ function App() {
       }
     });
     
+    console.log('Final translated text:', translatedText);
+    console.log('Matches:', matches);
+    
     setMatchCount(matches);
     setDisplayedText(translatedText);
   }
@@ -145,43 +189,33 @@ function App() {
   return (
     <div className="min-h-screen p-4">
       <h1 className="text-4xl font-bold mb-8 text-center">
-        Trønderomat BETA v. 1.0!  
+        T r ø n d e r o m a t!    
       </h1> 
+      <p className="text-gray-600">
+      Beta versjon 1.0
+      </p>
+       <br></br>
+      <br></br>
     
       <form onSubmit={(e) => e.preventDefault()} className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
           {/* Original text box - always shown */}
           <div className="w-full">
-            {/*
-            <label htmlFor="message" className="block text-heading font-medium mb-2 text-base">
-              Original tekst:
-            </label>
-            */}
             <textarea 
               ref={textareaRef}
               id="message" 
               rows={6}
-              className="bg-neutral-secondary-medium border-2 border-default-medium text-heading text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder:text-body min-h-[200px] resize-y"
+              className="bg-neutral-secondary-medium border-2 border-default-medium text-heading text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-500placeholder:text-body min-h-[200px] resize-y text-left"
               placeholder="Skriv tekst som skal oversettes til trøndersk her..."
             />
-            {/*
-            <div className="mt-2 text-sm text-gray-600">
-              Tips: Trykk <kbd className="px-2 py-1 bg-gray-100 border border-gray-300 rounded">Enter</kbd> for å oversette
-            </div>
-            */}
           </div>
           
           {/* Translated text box - always shown */}
           <div className="w-full">
-            {/*
-            <label className="block text-heading font-medium mb-2 text-base">
-              Oversettelse:
-            </label>
-            */}
             <div className="bg-neutral-secondary-light border-2 border-default-medium rounded-lg p-4 min-h-[200px] shadow-md">
-              <div className="text-body whitespace-pre-wrap font-sans text-base min-h-[150px]">
+              <div className="text-body whitespace-pre-wrap font-sans text-base min-h-[150px] text-left">
                 {displayedText || (
-                  <div className="text-gray-500 italic">
+                  <div className="text-gray-600 italic">
                     {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
                   </div>
                 )}
@@ -226,6 +260,11 @@ function App() {
           )}
         </div>
       </form>
+      <div>
+        <p className="text-gray-600 text-sm "><br></br><br></br>
+          Copyright Ina Vangen
+          </p>
+      </div>
     </div>
   );
 }
