@@ -3,7 +3,6 @@ import './App.css'
 
 function App() {
   const [displayedText, setDisplayedText] = useState(''); // State for translated text
-  const [originalText, setOriginalText] = useState(''); // State for original text
   const [matchCount, setMatchCount] = useState(0); // State for number of matches
   const [translationMap, setTranslationMap] = useState<Map<string, string>>(new Map()); // Map for translations
   const [isLoading, setIsLoading] = useState(true); // Loading state
@@ -95,7 +94,6 @@ function App() {
     if (!textareaRef.current) return;
     
     const inputText = textareaRef.current.value || '';
-    setOriginalText(inputText); // Store original text
     
     if (isLoading) {
       setDisplayedText(`${inputText}\n\n---\nLaster oversettelsesdata...`);
