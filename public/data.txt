@@ -365,7 +365,7 @@ Hukommelse Minnj
 Hvis Om
 Melkesuppe Mjølkgryn
 Trestativ Mjølkrampe
-Flink Morsk
+Flink flenk
 Mareritt Murru
 Parfyme Muskus
 Meget Mykkji
@@ -705,3 +705,4 @@ videre viar
 rukket rokki
 oventil åvate
 også å
+kjempeflink kjæmpeflink
