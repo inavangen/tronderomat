@@ -189,125 +189,112 @@ function App() {
   }
   
   return (
-    <div className="min-h-screen p-4">
-      <img src={placeholderImg} style={{ width: '100px', display: 'grid', placeItems: 'center' }}/>
-      <h1 className="text-4xl font-bold mb-8 text-center">
-        T r ø n d e r o m a t!    
-      </h1> 
-      <p className="text-gray-600">
-      Beta versjon 1.0
-      </p>
-       <br></br>
-      <br></br>
-    
-      <form onSubmit={(e) => e.preventDefault()} className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
-          {/* Original text box - always shown */}
-          <div className="w-full">
-            <textarea 
-              ref={textareaRef}
-              id="message" 
-              rows={6}
-              className="bg-white/65 border-2 border-default-medium text-gray-700 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-400 placeholder:text-body min-h-[200px] resize-y text-left"
-              placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
-          </div>
-
-          {/* Button and match count */}
-          <div className="flex flex-col items-center w-full">
-            <div className="flex gap-4 w-full">
-              <button 
-                ref={buttonRef}
-                type="button" 
-                onClick={handleButtonClick}
-                disabled={isLoading}
-                className={`flex-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
-              >
-                {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
-              </button>
- 
-
-              <button 
-                ref={resetButtonRef}
-                type="button" 
-                onClick={handleResetClick}
-                className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-700 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}              >
-                Nullstill
-              </button>
-            </div>
-            <br></br>
-            
-            {/* Translated text box - always shown */}
+    <div className="min-h-screen p-4 flex flex-col items-center">
+      <div className="w-full max-w-[700px]">
+        <img src={placeholderImg} style={{ width: '100px', display: 'grid', placeItems: 'center' }}/>
+        <h1 className="text-4xl font-bold mb-8 text-center">
+          T r ø n d e r o m a t!    
+        </h1> 
+        <p className="text-gray-600">
+          Beta versjon 1.0
+        </p>
+        <br></br>
+        <br></br>
+      
+        <form onSubmit={(e) => e.preventDefault()} className="w-full">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
+            {/* Original text box - always shown */}
             <div className="w-full">
-              <div className="bg-white/65 border-2 border-gray-400 rounded-lg p-4 shadow-sm">
-                <div className="text-body whitespace-pre-wrap font-sans text-base text-left text-gray-700">
-                  {displayedText || (
-                    <div className="text-gray-700 italic">
-                      {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
-                    </div>
-                  )}
+              <textarea 
+                ref={textareaRef}
+                id="message" 
+                rows={6}
+                className="bg-white/65 border-2 border-default-medium text-gray-700 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-400 placeholder:text-body min-h-[200px] resize-y text-left"
+                placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
+            </div>
+
+            {/* Button and match count */}
+            <div className="flex flex-col items-center w-full">
+              <div className="flex gap-4 w-full">
+                <button 
+                  ref={buttonRef}
+                  type="button" 
+                  onClick={handleButtonClick}
+                  disabled={isLoading}
+                  className={`flex-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+                >
+                  {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
+                </button>
+   
+                <button 
+                  ref={resetButtonRef}
+                  type="button" 
+                  onClick={handleResetClick}
+                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-700 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
+                  Nullstill
+                </button>
+              </div>
+              <br></br>
+              
+              {/* Translated text box - always shown */}
+              <div className="w-full">
+                <div className="bg-white/65 border-2 border-gray-400 rounded-lg p-4 shadow-sm">
+                  <div className="text-body whitespace-pre-wrap font-sans text-base text-left text-gray-700">
+                    {displayedText || (
+                      <div className="text-gray-700 italic">
+                        {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
+            
+            {/* Match count displayed below button 
+            {matchCount > 0 && (
+              <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-blue-50 w-full max-w-2xl">
+                <p className="text-blue-800 text-xl font-medium text-center">
+                  Antall oversatte ord: <span className="font-bold text-2xl">{matchCount}</span>
+                </p>
+                <p className="text-blue-600 text-base text-center mt-2">
+                  {matchCount === 1 ? '1 ord ble oversatt' : `${matchCount} ord ble oversatt`}
+                </p>
+              </div>
+            )}
+            */}
+            
+            {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
+              <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full">
+                <p className="text-yellow-800 text-xl font-medium text-center">
+                  Ingen ord ble oversatt
+                </p>
+                <p className="text-yellow-600 text-base text-center mt-2">
+                  Prøv med andre ord eller sjekk at data.txt filen er korrekt
+                </p>
+              </div>
+            )}
           </div>
-          
-          {/* Match count displayed below button 
-          {matchCount > 0 && (
-            <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-blue-50 w-full max-w-2xl">
-              <p className="text-blue-800 text-xl font-medium text-center">
-                Antall oversatte ord: <span className="font-bold text-2xl">{matchCount}</span>
-              </p>
-              <p className="text-blue-600 text-base text-center mt-2">
-                {matchCount === 1 ? '1 ord ble oversatt' : `${matchCount} ord ble oversatt`}
-              </p>
-            </div>
-          )}
-          */}
-          
-          {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
-            <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full max-w-2xl">
-              <p className="text-yellow-800 text-xl font-medium text-center">
-                Ingen ord ble oversatt
-              </p>
-              <p className="text-yellow-600 text-base text-center mt-2">
-                Prøv med andre ord eller sjekk at data.txt filen er korrekt
-              </p>
-            </div>
-          )}
-        </div>
-      </form>
+        </form>
 
-      {/* Your page content here */}
-      <div className="flex flex-col min-h-screen">
-        <h2 className="text-xl font-bold mb-8 text-left">
-        <br></br>
-        Hva er Trønderomat?</h2> 
-        <p className="text-gray-600 text-left">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </p>
-        </div>
-
-        <h2 className="text-xl font-bold mb-8 text-left">
-        <br></br>
-        Hvem har laget den?</h2> 
-        <p className="text-gray-600 text-left">
-        Jeg har laget den 
-        </p>
-
-        <h2 className="text-xl font-bold mb-8 text-left">
-        <br></br>
-        Hvis jeg oppdager en feil?</h2> 
-        <p className="text-gray-600 text-left">
-        Da kan du sende inn dine forbedringspotensialer her:
-        </p>
-          
-        {/* Copyright stuff */}
-        <div className="mt-auto">
-          <p className="text-gray-600 text-sm">
-            Copyright Ina Vangen
+        {/* Your page content here */}
+        <div className="flex flex-col">
+          <h2 className="text-xl font-bold mb-8 text-left">
+            <br></br>
+            Hva er Trønderomat?
+          </h2> 
+          <p className="text-gray-600 text-left">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
           </p>
         </div>
-
       </div>
+      
+      {/* Copyright stuff */}
+      <div className="w-full max-w-[700px] mt-auto">
+        <p className="text-gray-600 text-sm">
+          Copyright Ina Vangen
+        </p>
+      </div>
+    </div>
   );
 }
 
