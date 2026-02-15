@@ -284,6 +284,7 @@ function App() {
           </h2> 
           <p className="text-gray-600 text-left">
             Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det. Link kommer snart
+          <br></br><br></br>
           </p>
         </div>
       </div>
