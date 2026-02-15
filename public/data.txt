@@ -1099,3 +1099,6 @@ også å
 åventil oventil
 oversette åversætt
 oversetter åversætt 
+hete heite
+heter heite
+hette heita
