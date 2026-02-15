@@ -196,7 +196,7 @@ function App() {
           T r ø n d e r o m a t!    
         </h1> 
         <p className="text-gray-600">
-          Beta versjon 1.0
+          Beta versjon 1.1
         </p>
         <br></br>
         <br></br>
@@ -283,7 +283,7 @@ function App() {
             Hva er Trønderomat?
           </h2> 
           <p className="text-gray-600 text-left">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det. Link kommer snart
           </p>
         </div>
       </div>
