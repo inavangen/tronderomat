@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import placeholderImg from './assets/placeholder.png';
+import placeholderImg from '/favicon.svg';
 
 function App() {
   const [displayedText, setDisplayedText] = useState(''); // State for translated text
@@ -193,10 +193,10 @@ function App() {
       <div className="w-full max-w-[700px]">
         <img src={placeholderImg} style={{ width: '100px', display: 'grid', placeItems: 'center' }}/>
         <h1 className="text-4xl font-bold mb-8 text-center">
-          TRØNDEROMAT!    
+          TRØNDEROMAT    
         </h1> 
         <p className="text-gray-400">
-          Beta versjon 1.1
+          Beta versjon 1.2
         </p>
         <br></br>
         <br></br>
@@ -209,7 +209,7 @@ function App() {
                 ref={textareaRef}
                 id="message" 
                 rows={6}
-                className="bg-white/65 border-2 border-default-medium text-gray-900 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left"
+                className="bg-white/65 border-2 border-default-medium text-gray-900 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
                 placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
             </div>
 
@@ -278,12 +278,9 @@ function App() {
 
         {/* Your page content here */}
         <div className="flex flex-col">
-          <h2 className="text-xl font-bold mb-8 text-left">
-            <br></br>
-            HVA ER TRØNDEROMAT?
-          </h2> 
-          <p className="text-gray-200 text-left">
-            Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det. Link kommer snart
+          <p className="text-gray-200 text-left"><br></br><br></br><br></br>
+            <b>Hva er Trønderomat?</b><br></br>Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
+            <br></br><br></br> Link kommer snart
           </p>
         </div>
       </div>
@@ -291,7 +288,7 @@ function App() {
       {/* Copyright stuff */}
       <div className="w-full max-w-[700px] mt-auto">
         <p className="text-gray-400 text-sm">
-          <br></br>Copyright Ina Vangen
+          Copyright Ina Vangen
         </p>
       </div>
     </div>
