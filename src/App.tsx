@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react'
-import './App.css'
+import { useEffect, useRef, useState } from 'react';
+import './App.css';
 import placeholderImg from './assets/placeholder.png';
 
 function App() {
@@ -193,9 +193,9 @@ function App() {
       <div className="w-full max-w-[700px]">
         <img src={placeholderImg} style={{ width: '100px', display: 'grid', placeItems: 'center' }}/>
         <h1 className="text-4xl font-bold mb-8 text-center">
-          T r ø n d e r o m a t!    
+          TRØNDEROMAT!    
         </h1> 
-        <p className="text-gray-600">
+        <p className="text-gray-400">
           Beta versjon 1.1
         </p>
         <br></br>
@@ -209,7 +209,7 @@ function App() {
                 ref={textareaRef}
                 id="message" 
                 rows={6}
-                className="bg-white/65 border-2 border-default-medium text-gray-700 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-400 placeholder:text-body min-h-[200px] resize-y text-left"
+                className="bg-white/65 border-2 border-default-medium text-gray-900 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left"
                 placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
             </div>
 
@@ -230,7 +230,7 @@ function App() {
                   ref={resetButtonRef}
                   type="button" 
                   onClick={handleResetClick}
-                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-700 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
+                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
                   Nullstill
                 </button>
               </div>
@@ -238,8 +238,8 @@ function App() {
               
               {/* Translated text box - always shown */}
               <div className="w-full">
-                <div className="bg-white/65 border-2 border-gray-400 rounded-lg p-4 shadow-sm">
-                  <div className="text-body whitespace-pre-wrap font-sans text-base text-left text-gray-700">
+                <div className="bg-white/85 border-2 border-gray-400 rounded-lg p-4 shadow-sm">
+                  <div className="text-body whitespace-pre-wrap text-base text-left text-gray-700 font-bold">
                     {displayedText || (
                       <div className="text-gray-700 italic">
                         {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
@@ -280,19 +280,18 @@ function App() {
         <div className="flex flex-col">
           <h2 className="text-xl font-bold mb-8 text-left">
             <br></br>
-            Hva er Trønderomat?
+            HVA ER TRØNDEROMAT?
           </h2> 
-          <p className="text-gray-600 text-left">
+          <p className="text-gray-200 text-left">
             Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det. Link kommer snart
-          <br></br><br></br>
           </p>
         </div>
       </div>
       
       {/* Copyright stuff */}
       <div className="w-full max-w-[700px] mt-auto">
-        <p className="text-gray-600 text-sm">
-          Copyright Ina Vangen
+        <p className="text-gray-400 text-sm">
+          <br></br>Copyright Ina Vangen
         </p>
       </div>
     </div>

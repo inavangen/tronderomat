@@ -1,12 +1,12 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', Courier, monospace;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background: #126080;
-  background: linear-gradient(135deg,rgba(18, 96, 128, 1) 1%, rgba(87, 199, 133, 1) 65%, rgba(204, 190, 59, 1) 100%);
+  background: linear-gradient(135deg,rgb(39, 32, 60) 1%, rgb(32, 32, 32) 65%, rgb(11, 11, 11) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -67,3 +67,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
