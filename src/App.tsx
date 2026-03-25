@@ -199,11 +199,11 @@ function App() {
           Beta versjon 1.2
         </p>
         <br></br>
-        <br></br>
       
         <form onSubmit={(e) => e.preventDefault()} className="w-full">
           <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
-            {/* Original text box - always shown */}
+            
+            {/* Original text box */}
             <div className="w-full">
               <textarea 
                 ref={textareaRef}
@@ -212,31 +212,8 @@ function App() {
                 className="bg-white/65 border-2 border-default-medium text-gray-900 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
                 placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
             </div>
-
-            {/* Button and match count */}
-            <div className="flex flex-col items-center w-full">
-              <div className="flex gap-4 w-full">
-                <button 
-                  ref={buttonRef}
-                  type="button" 
-                  onClick={handleButtonClick}
-                  disabled={isLoading}
-                  className={`flex-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
-                >
-                  {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
-                </button>
-   
-                <button 
-                  ref={resetButtonRef}
-                  type="button" 
-                  onClick={handleResetClick}
-                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
-                  Nullstill
-                </button>
-              </div>
-              <br></br>
               
-              {/* Translated text box - always shown */}
+              {/* Translated text box */}
               <div className="w-full">
                 <div className="bg-white/85 border-2 border-gray-400 rounded-lg p-4 shadow-sm">
                   <div className="text-body whitespace-pre-wrap text-base text-left text-gray-700 font-bold">
@@ -249,6 +226,30 @@ function App() {
                 </div>
               </div>
             </div>
+
+            {/* Translation Button */}
+            <div className="flex flex-col items-center w-full">
+              <div className="flex gap-4 w-full">
+                <button 
+                  ref={buttonRef}
+                  type="button" 
+                  onClick={handleButtonClick}
+                  disabled={isLoading}
+                  className={`flex-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+                >
+                  {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
+                </button>
+
+                {/* Reset Button */}   
+                <button 
+                  ref={resetButtonRef}
+                  type="button" 
+                  onClick={handleResetClick}
+                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
+                  Nullstill
+                </button>
+              </div>
+              <br></br>
             
             {/* Match count displayed below button 
             {matchCount > 0 && (
@@ -262,6 +263,8 @@ function App() {
               </div>
             )}
             */}
+
+            
             
             {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
               <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full">
@@ -276,11 +279,19 @@ function App() {
           </div>
         </form>
 
-        {/* Your page content here */}
+        {/* Divider Separator line */}
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />   
+        
+
+        {/* About Content here */}
         <div className="flex flex-col">
-          <p className="text-gray-200 text-left"><br></br><br></br><br></br>
+          <p className="text-gray-200 text-left">
             <b>Hva er Trønderomat?</b><br></br>Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
-            <br></br><br></br> Link kommer snart
+            <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gå til skjema</a>
           </p>
         </div>
       </div>

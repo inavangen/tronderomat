@@ -1,5 +1,5 @@
 :root {
-  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-family: 'Dogica', 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', Courier, monospace;
   line-height: 1.4;
   font-weight: 400;
   font-size: smaller;
@@ -69,3 +69,14 @@ button:focus-visible {
   }
 }
 
+@font-face {
+  font-family: 'Dogica'; 
+  src: url('fonts/dogica.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Improves performance */
+}
+
+h1 {
+  font-family: 'Dogica';
+}
