@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './index.css'
 import './App.css';
-import placeholderImg from '/favicon.svg';  
+import logoImg from './assets/logo.png';  
 
 
 
@@ -195,10 +195,10 @@ function App() {
     
     <div className="min-h-screen p-4 flex flex-col items-center">
       <div className="w-full max-w-[700px]">
-        <img src={placeholderImg} style={{ width: '100px', display: 'grid', placeItems: 'center' }}/>
-        <h1 className="text-4xl font-bold mb-8 text-center !font-test">
+        <img src={logoImg} style={{ width: '300px', placeItems: 'center' }}/>
+        {/* <h1 className="text-4xl font-bold mb-8 text-center !font-test">
           TRØNDEROMAT    
-        </h1> 
+        </h1> */}
         <br></br>
       
         <form onSubmit={(e) => e.preventDefault()} className="w-full">
@@ -210,7 +210,7 @@ function App() {
                 ref={textareaRef}
                 id="message" 
                 rows={4}
-                className="bg-white/65 border-2 border-default-medium text-gray-900 font-bold text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
+                className="bg-white/75 border-2 border-default-medium text-gray-800 font-bold text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
                 placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
             </div>
               
@@ -236,7 +236,7 @@ function App() {
                   type="button" 
                   onClick={handleButtonClick}
                   disabled={isLoading}
-                  className={`flex-2 text-white bg-gradient-to-br from-green-700 to-purple-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+                  className={`flex-2 text-white bg-gradient-to-br from-purple-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
                 >
                   {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
                 </button>
