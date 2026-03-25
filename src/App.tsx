@@ -210,7 +210,7 @@ function App() {
                 ref={textareaRef}
                 id="message" 
                 rows={4}
-                className="bg-white/75 border-2 border-default-medium text-gray-800 font-bold text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
+                className="bg-white/75 border-2 border-default-medium text-gray-800 font-semibold text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
                 placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
             </div>
               
@@ -285,7 +285,7 @@ function App() {
       {/* Copyright stuff */}
       <div className="w-full max-w-[700px] mt-auto">
         <p className="text-gray-400 text-sm">
-          Copyright Ina Vangen <br></br> Beta versjon 1.3
+          Copyright Ina Vangen <br></br> Beta versjon 1.4
         </p>
         
       </div>
