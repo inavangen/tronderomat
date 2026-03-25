@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import './index.css'
 import './App.css';
-import placeholderImg from '/favicon.svg';
+import placeholderImg from '/favicon.svg';  
+
+
 
 function App() {
   const [displayedText, setDisplayedText] = useState(''); // State for translated text
@@ -189,15 +192,13 @@ function App() {
   }
   
   return (
+    
     <div className="min-h-screen p-4 flex flex-col items-center">
       <div className="w-full max-w-[700px]">
         <img src={placeholderImg} style={{ width: '100px', display: 'grid', placeItems: 'center' }}/>
-        <h1 className="text-4xl font-bold mb-8 text-center">
+        <h1 className="text-4xl font-bold mb-8 text-center !font-test">
           TRØNDEROMAT    
         </h1> 
-        <p className="text-gray-400">
-          Beta versjon 1.2
-        </p>
         <br></br>
       
         <form onSubmit={(e) => e.preventDefault()} className="w-full">
@@ -208,17 +209,17 @@ function App() {
               <textarea 
                 ref={textareaRef}
                 id="message" 
-                rows={6}
-                className="bg-white/65 border-2 border-default-medium text-gray-900 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
+                rows={4}
+                className="bg-white/65 border-2 border-default-medium text-gray-900 font-bold text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
                 placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
             </div>
               
               {/* Translated text box */}
               <div className="w-full">
-                <div className="bg-white/85 border-2 border-gray-400 rounded-lg p-4 shadow-sm">
+                <div className="bg-white/85 border-2 border-gray-400 rounded-lg p-4 shadow-sm" >
                   <div className="text-body whitespace-pre-wrap text-base text-left text-gray-700 font-bold">
                     {displayedText || (
-                      <div className="text-gray-700 italic">
+                      <div className="text-gray-900">
                         {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
                       </div>
                     )}
@@ -229,13 +230,13 @@ function App() {
 
             {/* Translation Button */}
             <div className="flex flex-col items-center w-full">
-              <div className="flex gap-4 w-full">
+              <div className="flex gap-8 w-full">
                 <button 
                   ref={buttonRef}
                   type="button" 
                   onClick={handleButtonClick}
                   disabled={isLoading}
-                  className={`flex-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+                  className={`flex-2 text-white bg-gradient-to-br from-green-700 to-purple-700 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
                 >
                   {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
                 </button>
@@ -245,26 +246,11 @@ function App() {
                   ref={resetButtonRef}
                   type="button" 
                   onClick={handleResetClick}
-                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
+                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
                   Nullstill
                 </button>
               </div>
-              <br></br>
-            
-            {/* Match count displayed below button 
-            {matchCount > 0 && (
-              <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-blue-50 w-full max-w-2xl">
-                <p className="text-blue-800 text-xl font-medium text-center">
-                  Antall oversatte ord: <span className="font-bold text-2xl">{matchCount}</span>
-                </p>
-                <p className="text-blue-600 text-base text-center mt-2">
-                  {matchCount === 1 ? '1 ord ble oversatt' : `${matchCount} ord ble oversatt`}
-                </p>
-              </div>
-            )}
-            */}
-
-            
+              <br></br>            
             
             {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
               <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full">
@@ -285,22 +271,23 @@ function App() {
         <br></br>
         <br></br>
         <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />   
-        
 
         {/* About Content here */}
         <div className="flex flex-col">
           <p className="text-gray-200 text-left">
-            <b>Hva er Trønderomat?</b><br></br>Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
-            <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gå til skjema</a>
+            <b>Hva er Trønderomat?</b><br></br><br></br>Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
+            <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gi tilbakemelding</a>
           </p>
         </div>
       </div>
       
+      
       {/* Copyright stuff */}
       <div className="w-full max-w-[700px] mt-auto">
         <p className="text-gray-400 text-sm">
-          Copyright Ina Vangen
+          Copyright Ina Vangen <br></br> Beta versjon 1.3
         </p>
+        
       </div>
     </div>
   );
