@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import './index.css'
 import './App.css';
-import logoImg from './assets/logo.png';  
+import logoImg from './assets/logo.png';
+import './index.css';
 
 
 
@@ -269,16 +269,29 @@ function App() {
         <br></br>
         <br></br>
         <br></br>
-        <br></br>
         <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />   
 
         {/* About Content here */}
         <div className="flex flex-col">
           <p className="text-gray-200 text-left">
-            <b>Hva er Trønderomat?</b><br></br><br></br>Trønderomat er en oversettelsesapp laget av Ina Vangen som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
+            <b>HVA ER TRØNDEROMAT?</b><br></br><br></br>Trønderomat er en oversettelsesapp laget av Ina som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
             <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gi tilbakemelding</a>
           </p>
         </div>
+
+        {/* Divider Separator line */}
+        <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />   
+
+        {/* Donation Content here */}
+        <div className="flex flex-col">
+          <p className="text-gray-200 text-left">
+            <b>STØTT TRONDEROMATEN?</b><br></br><br></br>Hvis du synes dette var festlig, og vil større videreuutviklingen av Trønderomaten, og kanskje fremtidige andre, morsomme webapper, kan du sende en liten donasjon her
+            <br></br><br></br><a href="https://ko-fi.com/ina553388">Støtt Trønderomaten!</a>
+          </p>
+          <br></br>
+        <br></br>
+        </div>
+
       </div>
       
       
