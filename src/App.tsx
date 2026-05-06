@@ -3,13 +3,12 @@ import './App.css';
 import logoImg from './assets/logo.png';
 import './index.css';
 
-
-
 function App() {
   const [displayedText, setDisplayedText] = useState(''); // State for translated text
   const [matchCount, setMatchCount] = useState(0); // State for number of matches
   const [translationMap, setTranslationMap] = useState<Map<string, string>>(new Map()); // Map for translations
   const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [placeholder, setPlaceholder] = useState('Skriv tekst som skal oversettes til trøndersk her...'); // State for placeholder text
   const textareaRef = useRef<HTMLTextAreaElement>(null); // Ref to get textarea value
   const buttonRef = useRef<HTMLButtonElement>(null); // Ref for button
   const resetButtonRef = useRef<HTMLButtonElement>(null); // Ref for reset button
@@ -189,80 +188,111 @@ function App() {
     }
     setDisplayedText(''); // Clear translated text
     setMatchCount(0); // Reset match count
+    // Reset placeholder when resetting
+    setPlaceholder('Skriv tekst som skal oversettes til trøndersk her...');
+  }
+
+  // Handle click on textarea to remove placeholder immediately
+  const handleTextareaClick = () => {
+    setPlaceholder(''); // Clear placeholder on click
+  }
+
+  // Handle blur to restore placeholder if empty
+  const handleTextareaBlur = () => {
+    if (textareaRef.current && textareaRef.current.value === '') {
+      setPlaceholder('Skriv tekst som skal oversettes til trøndersk her...');
+    }
   }
   
   return (
     
     <div className="min-h-screen p-4 flex flex-col items-center">
-      <div className="w-full max-w-[700px]">
-        <img src={logoImg} style={{ width: '300px', placeItems: 'center' }}/>
-        {/* <h1 className="text-4xl font-bold mb-8 text-center !font-test">
-          TRØNDEROMAT    
-        </h1> */}
+      <div className="w-full max-w-[900px]">
+        {/* Centered logo */}
+        <div className="flex justify-center mb-4">
+          <img src={logoImg} style={{ width: '300px' }} alt="Trønderomat logo"/>
+        </div>
         <br></br>
       
         <form onSubmit={(e) => e.preventDefault()} className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
+          {/* Two-column layout for desktop, single column for mobile/tablet */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             
-            {/* Original text box */}
-            <div className="w-full">
+            {/* Original text box - LEFT COLUMN on desktop */}
+            <div className="w-full flex flex-col">
+              <label htmlFor="original-text" className="text-gray-300  text-left mb-2 text-sm">
+                Original text
+              </label>
               <textarea 
                 ref={textareaRef}
-                id="message" 
+                id="original-text"
                 rows={4}
-                className="bg-white/75 border-2 border-default-medium text-gray-800 font-semibold text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-md placeholder-gray-800 placeholder:text-body min-h-[200px] resize-y text-left "
-                placeholder="Skriv tekst som skal oversettes til trøndersk her..."/>
+                className="bg-white/85 border-2 border-gray-400 text-gray-800 text-base rounded-lg focus:ring-brand focus:border-brand block w-full p-4 shadow-sm resize-y text-left flex-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                placeholder={placeholder}
+                onClick={handleTextareaClick}
+                onBlur={handleTextareaBlur}
+              />
             </div>
               
-              {/* Translated text box */}
-              <div className="w-full">
-                <div className="bg-white/85 border-2 border-gray-400 rounded-lg p-4 shadow-sm" >
-                  <div className="text-body whitespace-pre-wrap text-base text-left text-gray-700 font-bold">
-                    {displayedText || (
-                      <div className="text-gray-900">
-                        {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
-                      </div>
-                    )}
-                  </div>
+            {/* Translated text box - RIGHT COLUMN on desktop */}
+            <div className="w-full flex flex-col">
+              <label htmlFor="translated-text" className="text-gray-300 text-left mb-2 text-sm">
+                Trøndersk
+              </label>
+              <div 
+                id="translated-text"
+                className="bg-white/85 border-2 border-gray-400 rounded-lg p-4 shadow-sm flex flex-col flex-1"
+              >
+                <div className="text-body whitespace-pre-wrap text-base text-left text-gray-700 overflow-auto">
+                  {displayedText || (
+                    <div className="text-gray-500">
+                      {isLoading ? 'Laster oversettelsesdata...' : 'Oversettelsen vises her...'}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
-
-            {/* Translation Button */}
-            <div className="flex flex-col items-center w-full">
-              <div className="flex gap-8 w-full">
-                <button 
-                  ref={buttonRef}
-                  type="button" 
-                  onClick={handleButtonClick}
-                  disabled={isLoading}
-                  className={`flex-2 text-white bg-gradient-to-br from-purple-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
-                >
-                  {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
-                </button>
-
-                {/* Reset Button */}   
-                <button 
-                  ref={resetButtonRef}
-                  type="button" 
-                  onClick={handleResetClick}
-                  className={`flex-1 bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 !font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
-                  Nullstill
-                </button>
-              </div>
-              <br></br>            
-            
-            {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
-              <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full">
-                <p className="text-yellow-800 text-xl font-medium text-center">
-                  Ingen ord ble oversatt
-                </p>
-                <p className="text-yellow-600 text-base text-center mt-2">
-                  Prøv med andre ord eller sjekk at data.txt filen er korrekt
-                </p>
-              </div>
-            )}
           </div>
+
+          {/* Translation Buttons - Aligned with boxes on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+            {/* Left button area - aligns with left text box */}
+            <div className="w-full">
+              <button 
+                ref={buttonRef}
+                type="button" 
+                onClick={handleButtonClick}
+                disabled={isLoading}
+                className={`w-full text-white bg-gradient-to-br from-purple-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+              >
+                {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
+              </button>
+            </div>
+
+            {/* Right button area - aligns with right text box */}
+            <div className="w-full">
+              <button 
+                ref={resetButtonRef}
+                type="button" 
+                onClick={handleResetClick}
+                className={`w-full bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
+                Nullstill
+              </button>
+            </div>
+          </div>
+          
+          <br></br>            
+          
+          {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
+            <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full">
+              <p className="text-yellow-800 text-xl font-medium text-center">
+                Ingen ord ble oversatt
+              </p>
+              <p className="text-yellow-600 text-base text-center mt-2">
+                Prøv med andre ord eller sjekk at data.txt filen er korrekt
+              </p>
+            </div>
+          )}
         </form>
 
         {/* Divider Separator line */}
@@ -271,32 +301,33 @@ function App() {
         <br></br>
         <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />   
 
-        {/* About Content here */}
-        <div className="flex flex-col">
-          <p className="text-gray-200 text-left">
-            <b>HVA ER TRØNDEROMAT?</b><br></br><br></br>Trønderomat er en oversettelsesapp laget av Ina som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
-            <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gi tilbakemelding</a>
-          </p>
+        {/* Two-column layout for About and Donation sections on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* About Content - LEFT COLUMN on desktop */}
+          <div className="flex flex-col">
+            <p className="text-gray-200 text-left">
+              <b>HVA ER TRØNDEROMAT?</b><br></br><br></br>Trønderomat er en oversettelsesapp laget av Ina som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
+              <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gi tilbakemelding</a>
+            </p>
+          </div>
+
+          {/* Donation Content - RIGHT COLUMN on desktop */}
+          <div className="flex flex-col">
+            <p className="text-gray-200 text-left">
+              <b>STØTT TRØNDEROMATEN?</b><br></br><br></br>Hvis du synes dette var festlig, og vil større videreuutviklingen av Trønderomaten, og kanskje fremtidige andre, morsomme webapper, kan du sende en liten donasjon her
+              <br></br><br></br><a href="https://ko-fi.com/ina553388">Støtt Trønderomaten!</a>
+            </p>
+          </div>
         </div>
-
-        {/* Divider Separator line */}
-        <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />   
-
-        {/* Donation Content here */}
-        <div className="flex flex-col">
-          <p className="text-gray-200 text-left">
-            <b>STØTT TRONDEROMATEN?</b><br></br><br></br>Hvis du synes dette var festlig, og vil større videreuutviklingen av Trønderomaten, og kanskje fremtidige andre, morsomme webapper, kan du sende en liten donasjon her
-            <br></br><br></br><a href="https://ko-fi.com/ina553388">Støtt Trønderomaten!</a>
-          </p>
-          <br></br>
+        
         <br></br>
-        </div>
+        <br></br>
 
       </div>
       
       
       {/* Copyright stuff */}
-      <div className="w-full max-w-[700px] mt-auto">
+      <div className="w-full max-w-[900px] mt-auto">
         <p className="text-gray-400 text-sm">
           Copyright Ina Vangen <br></br> Beta versjon 1.4
         </p>

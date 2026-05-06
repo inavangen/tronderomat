@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root {
-  font-family: 'Jersey', 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   line-height: 1.4;
   font-weight: 400;
   font-size: smaller;
