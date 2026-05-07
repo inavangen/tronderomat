@@ -209,11 +209,13 @@ function App() {
     <div className="min-h-screen p-4 flex flex-col items-center">
       <div className="w-full max-w-[900px]">
         {/* Centered logo */}
-        <div className="flex justify-center mb-4">
-          <img src={logoImg} style={{ width: '300px' }} alt="Trønderomat logo"/>
+        <div className="flex justify-center mb-8 mt-12">
+          <img src={logoImg} style={{ width: '350px' }} alt="Trønderomat logo"/>
         </div>
-        <br></br>
-      
+        <p className="text-gray-400 text-center text-3xl mb-24">
+          <i>Trønderifiser alle dine tekster fra norsk bokmål til Trøndersk</i>
+        </p>
+
         <form onSubmit={(e) => e.preventDefault()} className="w-full">
           {/* Two-column layout for desktop, single column for mobile/tablet */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -221,7 +223,7 @@ function App() {
             {/* Original text box - LEFT COLUMN on desktop */}
             <div className="w-full flex flex-col">
               <label htmlFor="original-text" className="text-gray-300  text-left mb-2 text-sm">
-                Original text
+                Norsk bokmål
               </label>
               <textarea 
                 ref={textareaRef}
@@ -263,7 +265,7 @@ function App() {
                 type="button" 
                 onClick={handleButtonClick}
                 disabled={isLoading}
-                className={`w-full text-white bg-gradient-to-br from-purple-500 to-purple-800 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+                className={`w-full text-white bg-gradient-to-br from-indigo-500 to-indigo-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800 font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
               >
                 {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
               </button>
@@ -275,7 +277,7 @@ function App() {
                 ref={resetButtonRef}
                 type="button" 
                 onClick={handleResetClick}
-                className={`w-full bg-transparent! hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
+                className={`w-full bg-transparent hover:bg-gray-50 focus:ring-4 focus:outline-ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-gray-400 text-gray-400 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}>
                 Nullstill
               </button>
             </div>
@@ -306,23 +308,19 @@ function App() {
           {/* About Content - LEFT COLUMN on desktop */}
           <div className="flex flex-col">
             <p className="text-gray-200 text-left">
-              <b>HVA ER TRØNDEROMAT?</b><br></br><br></br>Trønderomat er en oversettelsesapp laget av Ina som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det kan hende det finnes feil i oversettelsen. Da kan du sende inn forbedringspotensialer, så fixer jeg det.
+              <b>HVA ER TRØNDEROMATEN?</b><br></br><br></br>Trønderomat er en oversettelsesapp som oversetter fra norsk bokmål til trøndersk, slik at ingen lengre kan si at man ikke forstår trøndersk. Det tas forbehold om feil i oversettelsen. Finner du noen bugs eller mener noe er feil, kan du sende inn tilbakemelding i skjemaet under.
               <br></br><br></br><a href="https://docs.google.com/forms/d/e/1FAIpQLSeAtGdhf7M_o5f8la10LPcGGPp2z-u0hC6TwJ4Hjg7dtm1FuQ/viewform?usp=header">Gi tilbakemelding</a>
             </p>
           </div>
 
           {/* Donation Content - RIGHT COLUMN on desktop */}
           <div className="flex flex-col">
-            <p className="text-gray-200 text-left">
-              <b>STØTT TRØNDEROMATEN?</b><br></br><br></br>Hvis du synes dette var festlig, og vil større videreuutviklingen av Trønderomaten, og kanskje fremtidige andre, morsomme webapper, kan du sende en liten donasjon her
+            <p className="text-gray-200 text-left mb-24">
+              <b>STØTT VIDEREUTVIKLING</b><br></br><br></br>Trønderomaten er et prosjekt utvikler av Ina. Hvis du synes denne appen var festlig, og vil større videreuutviklingen av Trønderomaten, og andre fremtidige prosjekter og apper, kan du sende en liten donasjon her. Tusen takk på forhånd! - Hilsen en hardcore Trønder.
               <br></br><br></br><a href="https://ko-fi.com/ina553388">Støtt Trønderomaten!</a>
             </p>
           </div>
         </div>
-        
-        <br></br>
-        <br></br>
-
       </div>
       
       
