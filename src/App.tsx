@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import logoImg from './assets/logo.png';
+import logoImg from './assets/logo2.png';
 import './index.css';
 
 function App() {
@@ -209,10 +209,10 @@ function App() {
     <div className="min-h-screen p-4 flex flex-col items-center">
       <div className="w-full max-w-[900px]">
         {/* Centered logo */}
-        <div className="flex justify-center mb-8 mt-12">
-          <img src={logoImg} style={{ width: '350px' }} alt="Trønderomat logo"/>
+        <div className="flex justify-center mt-2">
+          <img src={logoImg} style={{ width: '400px' }} alt="Trønderomat logo"/>
         </div>
-        <p className="text-gray-400 text-center text-3xl mb-24">
+        <p className="text-gray-400 text-center text-2xl mb-18">
           <i>Trønderifiser alle dine tekster fra norsk bokmål til Trøndersk</i>
         </p>
 
@@ -265,7 +265,7 @@ function App() {
                 type="button" 
                 onClick={handleButtonClick}
                 disabled={isLoading}
-                className={`w-full text-white bg-gradient-to-br from-indigo-500 to-indigo-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800 font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
+                className={`w-full text-white bg-gradient-to-br from-purple-500 to-purple-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800 font-bold rounded-lg text-lg px-8 py-4 text-center leading-5 border-2 border-default-medium ${isLoading ? 'opacity-50 cursor-not-allowed' : 'transform hover:scale-105 transition-transform'}`}
               >
                 {isLoading ? 'Laster...' : 'Oversett til trøndersk!'}
               </button>
