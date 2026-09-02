@@ -210,10 +210,10 @@ function App() {
       <div className="w-full max-w-[900px]">
         {/* Centered logo */}
         <div className="flex justify-center mt-2">
-          <img src={logoImg} style={{ width: '400px' }} alt="Trønderomat logo"/>
+          <img src={logoImg} style={{ width: '300px' }} alt="Trønderomat logo"/>
         </div>
-        <p className="text-gray-400 text-center text-2xl mb-18">
-          <i>Trønderifiser alle dine tekster fra norsk bokmål til Trøndersk</i>
+        <p className="text-gray-400 text-center text-xl mb-8">
+          <i>Trønderifiser tekst fra norsk bokmål til Trøndersk!</i>
         </p>
 
         <form onSubmit={(e) => e.preventDefault()} className="w-full">
@@ -282,8 +282,7 @@ function App() {
               </button>
             </div>
           </div>
-          
-          <br></br>            
+                      
           
           {matchCount === 0 && displayedText && !isLoading && !displayedText.includes('Laster') && (
             <div className="mt-8 p-6 border-2 border-default-medium rounded-lg bg-yellow-50 w-full">
